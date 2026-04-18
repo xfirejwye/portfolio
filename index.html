@@ -543,13 +543,36 @@
     </div>
     <div class="projects">
 
-      <a class="project-card card-red" href="https://github.com/xfirejwye" target="_blank" rel="noopener">
+      <a class="project-card card-green" href="https://github.com/xfirejwye" target="_blank" rel="noopener">
         <div>
           <div class="proj-name">my server</div>
           <p class="proj-desc">crew server unavaible adress play.forbidden5.lol.</p>
         </div>
         <div class="proj-right">
           <span class="proj-tag tag-green">open source</span>
+          <span class="proj-arrow">↗</span>
+        </div>
+      </a>
+
+      <button class="project-card card-green" onclick="copyToClipboard('LWThqtxSVrR5dDiuDY2pkfNwad25UTMSDU')" style="cursor: pointer;">
+  LWThqtxSVrR5dDiuDY2pkfNwad25UTMSDU
+</button>
+
+<script>
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(function() {
+    alert('Copied: ' + text);
+  }, function(err) {
+    console.error('Could not copy text: ', err);
+  });
+}
+</script>
+        <div>
+          <div class="proj-name">support</div>
+          <p class="proj-desc">support me here.</p>
+        </div>
+        <div class="proj-right">
+          <span class="proj-tag tag-pink">open source</span>
           <span class="proj-arrow">↗</span>
         </div>
       </a>
