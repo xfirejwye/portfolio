@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>Flappy Bird</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -17,7 +20,7 @@
         </div>
         <div class="bird-preview">🐦</div>
         <div class="instructions">
-          <p>Press <kbd>Space</kbd> or <kbd>Click</kbd> to flap</p>
+          <p>Press <kbd>Space</kbd> or <kbd>Tap</kbd> to flap</p>
           <p>Avoid the pipes!</p>
         </div>
         <button id="start-btn" class="game-btn">START GAME</button>
@@ -47,7 +50,7 @@
             <div id="medal-row" class="medal-row"></div>
           </div>
           <button id="restart-btn" class="game-btn">PLAY AGAIN</button>
-          <p class="restart-hint">or press <kbd>Space</kbd></p>
+          <p class="restart-hint">or press <kbd>Space</kbd> / tap screen</p>
         </div>
       </div>
     </div>
