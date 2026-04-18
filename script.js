@@ -12,6 +12,23 @@ ctx.imageSmoothingEnabled = false;
 const W = canvas.width;   // 288
 const H = canvas.height;  // 512
 
+// ── Responsive Scaling ────────────────────────────────────
+const container = document.getElementById('game-container');
+
+function scaleGame() {
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const scale = Math.min(vw / W, vh / H, 1.6); // cap at 1.6× on desktop
+  container.style.transform = `scale(${scale})`;
+  // On very small screens, remove the decorative border shadow
+  container.style.boxShadow = scale < 0.7
+    ? 'none'
+    : '0 0 0 3px #DEB862, 0 0 0 6px #5C3D00, 0 20px 60px rgba(0,0,0,0.8)';
+}
+
+scaleGame();
+window.addEventListener('resize', scaleGame);
+
 // ── UI Elements ───────────────────────────────────────────
 const startScreen   = document.getElementById('start-screen');
 const gameoverScreen= document.getElementById('gameover-screen');
@@ -460,7 +477,15 @@ document.addEventListener('keydown', e => {
 });
 
 canvas.addEventListener('click',      handleInput);
-canvas.addEventListener('touchstart', e => { e.preventDefault(); handleInput(); }, { passive: false });
+canvas.addEventListener('touchstart', e => {
+  e.preventDefault();
+  // Only respond to first touch point
+  if (e.touches.length === 1) handleInput();
+}, { passive: false });
+
+// Prevent scrolling/bouncing on iOS during game
+document.body.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
+document.body.addEventListener('touchend',  e => e.preventDefault(), { passive: false });
 
 startBtn.addEventListener('click',   e => { e.stopPropagation(); startGame(); bird.flap(); });
 restartBtn.addEventListener('click', e => { e.stopPropagation(); startGame(); bird.flap(); });
